@@ -1,0 +1,154 @@
+
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear Venta</h4>
+                        <p class="card-category">Llene los datos del pago</p>
+                    </div>
+                    <div class="card-body">
+                        <form *ngIf="this.pagoForm" [formGroup]="pagoForm" >
+                            <div class="row">
+                            
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Escriba el nombre del producto</label>
+                                      <input matInput 
+                                      
+                                      ngxTypeahead
+                                      [value]="search"
+                                      [taList]="this.nombreProducto"
+                                      (taSelected)="handleResultSelected($event)"
+                                      type="text" 
+                                      
+                                      >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Escriba el código del producto</label>
+                                      <input id="name" matInput #CodigoProducto   
+                                      >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4 mt-3">
+                                    <button [disabled]="!CodigoProducto.value" (click)="buscarPorCodigo(CodigoProducto.value)" type="button" class="btn btn-success">Buscar por código</button>
+                                </div>
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Producto</label>
+                                    <input readonly matInput formControlName="NombreProducto" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Codigo</label>
+                                    <input readonly matInput   formControlName="Codigo" type="text">
+                                  </mat-form-field>
+                                </div>
+                              
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <label>Precio</label>
+                                      <input readonly matInput   formControlName="Precio" type="number">
+                                    </mat-form-field>
+                                  </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Cantidad</label>
+                                    <input  matInput   formControlName="Cantidad" type="number">
+                                  </mat-form-field>
+                                </div>
+                              
+                            </div>
+                                  
+                            <button [disabled]="!this.pagoForm.valid" (click)="enviarProductoCart()" mat-raised-button type="submit" class="btn btn-danger pull-right">Añadir a la lista</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Productos a vender</h4>
+                        <p class="card-category"> Aqui esta la lista de productos a la venta</p>
+                    </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary text-center">
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Codigo
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                           
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Quitar
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" *ngFor="let producto of ListadoProductos; let i=index">
+                                <td>
+                                    {{i+1}}
+                                </td>
+                                <td>
+                                    {{producto.NombreProducto}}
+                                </td>
+                                <td>
+                                    {{producto.Codigo}}
+                                </td>
+                                <td>
+                                    {{producto.Cantidad}}
+                                </td>
+                                <td>
+                                    {{producto.Precio}}
+                                </td>
+                                <td>
+                                    <button (click)="deleteProducto(i)" type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                </td>
+                                
+                                
+                            </tr>
+                            
+                            
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h4 class="m-3"> Total: {{this.Total}}</h4>
+            <button [disabled]="this.ListadoProductos.length===0" (click)="registraCompra()" type="button" class="btn btn-danger m-3 mt-2">Registrar compra</button>
+                </div>
+     </div>
+        </div>
+    </div>
+  </div>
+

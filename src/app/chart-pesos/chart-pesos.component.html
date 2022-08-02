@@ -1,0 +1,25 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Evolución de pesos del miembro {{this.Nombre}}</h4>
+                    </div>
+                    <div class="card-body">
+<canvas *ngIf="this.PesosMiembros"  style="width: 100%;height: 500px"    baseChart 
+[datasets]="barChartData"
+[labels]="barChartLabels"
+[options]="barChartOptions"
+[plugins]="barChartPlugins"
+[legend]="barChartLegend"
+[colors]="barColors"
+[chartType]="barChartType">
+  </canvas>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>

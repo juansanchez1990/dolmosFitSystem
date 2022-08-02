@@ -1,0 +1,96 @@
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear Pago</h4>
+                        <p class="card-category">Llene los datos del pago</p>
+                    </div>
+                    <div class="card-body">
+                        <form *ngIf="this.pagoForm" [formGroup]="pagoForm" >
+                            <div class="row">
+                            
+                                <div *ngIf="this.rutaActiva.snapshot.params.idMiembro===undefined" class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Escriba el nombre del miembro</label>
+                                      <input matInput 
+                                      
+                                      ngxTypeahead
+                                      [value]="search"
+                                      [taList]="this.nombrePaciente"
+                                      (taSelected)="handleResultSelected($event)"
+                                      type="text" 
+                                      
+                                      >
+                                    </mat-form-field>
+                                </div>
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Nombre completo</label>
+                                    <input readonly matInput formControlName="NombreCompleto" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Número de identidad</label>
+                                    <input readonly matInput   formControlName="Identidad" type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Fecha de inicio</label>
+                                    <input matInput formControlName="FechaInicio"   type="date">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Fecha final</label>
+                                    <input  matInput formControlName="FechaFinal"  type="date">
+                                  </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <label>Peso actual</label>
+                                      <input  matInput formControlName="PesoActual"  type="number">
+                                    </mat-form-field>
+                                  </div>
+                              
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Pago</label>
+                                    <input  matInput formControlName="Pago"   type="number">
+                                  </mat-form-field>
+                                </div>
+                            
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Comentario (opcional)</label>
+                                    <textarea  matInput formControlName="Comentario"    type="text"></textarea>
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                      
+                      
+                            <button (click)="hacerPago()" [disabled]="!this.pagoForm.valid" mat-raised-button type="submit" class="btn btn-danger pull-right">Crear Pago</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+  </div>
+

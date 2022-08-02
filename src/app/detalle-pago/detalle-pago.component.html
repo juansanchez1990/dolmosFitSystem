@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div id="invoice">
+
+            <div class="toolbar hidden-print">
+                <div class="text-right">
+                    <button id="printInvoice" (click)="onPrint()" class="btn btn-info doNotPrint"><i class="fa fa-print"></i> Print</button>
+         
+                </div>
+                <hr>
+            </div>
+            <div *ngIf="this.detallePago" class="invoice overflow-auto">
+                <div style="min-width: 600px">
+                    <header>
+                        <div class="row">
+                            <div class="col">
+                                <a target="_blank" href="https://lobianijs.com">
+                                    <img style="border-radius:50%;" src="https://cdn-icons-png.flaticon.com/512/1026/1026713.png"/>
+                                    <!-- <img src="https://firebasestorage.googleapis.com/v0/b/sy-gym.appspot.com/o/279220959_113443714679531_6455183550361550969_n.jpg?alt=media&token=abce7560-e94f-485a-a932-27d1027c94b2" data-holder-rendered="true" /> -->
+                                    </a>
+                            </div>
+                            <div class="col company-details">
+                                <h2 class="name">
+                                    <a target="_blank" href="https://www.facebook.com/boxingclub1804">
+                                     SY-GYM
+                                    </a>
+                                </h2>
+                                <div>Club de Boxeo y Gimnasio Certificado</div>
+                                <div>Cel: 3321-9054</div>
+                                <div>Barrio Subirana, El Progreso Yoro</div>
+                            </div>
+                        </div>
+                    </header>
+                    <main>
+                        <div class="row contacts">
+                            <div class="col invoice-to">
+                                <div class="text-gray-light">Facturado a:</div>
+                                <h2 class="to">{{this.detallePago[0].NombreCompleto}}</h2>
+                            </div>
+                            <div class="col invoice-details">
+                                <h1 class="invoice-id">Factura #{{this.detallePago[0].NumeroFactura}}</h1>
+                                <div class="date">Fecha de la factura: {{this.detallePago[0].FechaPago}}</div>
+                            </div>
+                        </div>
+                        <table class="col-12" border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="text-left">Descripcion</th>
+                                    <th class="text-left">Monto</th>
+                                    <th class="text-right">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             
+                                <tr>
+                                    <td class="no">01</td>
+                                    <td class="text-left">Pago servicios gimnasio</td>
+                                    <td class="text-left">L. {{this.detallePago[0].Pago}}</td>
+                                    <td class="text-right">L. {{this.detallePago[0].Pago}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">SUBTOTAL</td>
+                                    <td>L. {{this.detallePago[0].Pago}}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2">GRAN TOTAL</td>
+                                    <td>L. {{this.detallePago[0].Pago}}</td>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="thanks">Gracias por preferirnos</div>
+                    
+                    </main>
+                    <footer>
+                        Factura creada por Boxing Club
+                    </footer>
+                </div>
+                <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+                <div></div>
+            </div>
+        </div>
+</div>
+</div>                     
+
+

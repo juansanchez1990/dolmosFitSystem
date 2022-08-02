@@ -1,0 +1,68 @@
+<!-- Section: Design Block -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <img style="border-radius:50%;" class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/1026/1026713.png"/>
+            <h2 class="fw-bold mb-5">Inicie Sesión</h2>
+            <form>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+        
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input #usuario type="email" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Usuario</label>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input #password type="password" id="form3Example4" class="form-control" />
+                <label class="form-label" for="form3Example4">Contraseña</label>
+              </div>
+
+
+              <!-- Submit button -->
+              <button (click)="getUsuario(usuario.value,password.value)" type="submit" class="btn btn-danger btn-block mb-4">
+                Entrar
+              </button>
+
+        
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="https://firebasestorage.googleapis.com/v0/b/sy-gym.appspot.com/o/PortadaSYGYM.jpg?alt=media&token=9c347f4c-deba-4f7a-853d-3c0c3af73b41" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

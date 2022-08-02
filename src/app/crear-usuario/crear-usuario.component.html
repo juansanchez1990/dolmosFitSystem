@@ -1,0 +1,84 @@
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear Usuario</h4>
+                        <p class="card-category">Llene los datos del usuario nuevo</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="usuarioForm">
+                            <div class="row">
+                            
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Nombre completo</label>
+                                      <input matInput  formControlName="NombreCompleto">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Correo Electrónico</label>
+                                      <input matInput formControlName="Correo"  type="email">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Número de celular</label>
+                                    <input matInput formControlName="Celular" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Número de identidad</label>
+                                    <input matInput formControlName="Identidad"  type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Rol</label>
+                                    <mat-select formControlName="Rol">
+                                      <mat-option value="1" >
+                                        Administrador
+                                      </mat-option>
+                                      <mat-option value="2" >
+                                        Vendedor
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                     
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <label>Usuario</label>
+                                      <input matInput formControlName="Usuario" type="text">
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <label>Contraseña</label>
+                                      <input matInput formControlName="Password"  type="text">
+                                    </mat-form-field>
+                                  </div>
+                            </div>
+                      
+                      
+                            <button [disabled]="!this.usuarioForm.valid" (click)="crearUsuario()" mat-raised-button type="submit" class="btn btn-danger pull-right">Crear Usuario</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+  </div>
+

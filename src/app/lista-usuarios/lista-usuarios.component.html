@@ -1,0 +1,169 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="main-content">
+    <div class="container-fluid">
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title ">Usuarios</h4>
+            <p class="card-category"> Lista de todos los usuarios registrados</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary text-center">
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Nombres
+                        </th>
+                        <th>
+                            Celular
+                        </th>
+                        <th>
+                            Identidad
+                        </th>
+                        <th>
+                            Fecha de ingreso
+                        </th>
+                        <th>
+                           Editar
+                        </th>
+                        <th>
+                           Estado
+                        </th>
+                    
+                       
+                    </thead>
+                    <tbody>
+                    
+                          <tr class="text-center" *ngFor="let usuario of Usuarios; let i=index">
+                         
+                            <td>
+                               {{i+1}}
+                            </td>
+                            <td>
+                                {{usuario.Nombre}}
+                            </td>
+                            <td>
+                                {{usuario.Celular}}
+                            </td>
+                            <td>
+                                {{usuario.Identidad}}
+                            </td>
+                            <td >
+                                {{usuario.FechaRegistro}}
+                            </td>
+                            <td >
+                                <button type="button" data-toggle="modal" (click)="cargarData(usuario)" data-target="#exampleModal" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            </td>
+                            <td  >
+                                <button *ngIf="usuario.Activo===true" type="button" (click)="inactivarUsuario(usuario,false)" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> </i> Desactivar</button>
+                                <button *ngIf="usuario.Activo===false" type="button" (click)="inactivarUsuario(usuario,true)" class="btn btn-success"><i class="fa fa-check" aria-hidden="true">  </i> Activar</button>
+                            </td>
+                          
+                          
+                          
+                       
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informacion del usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="this.UsuariosForm" [formGroup]="UsuariosForm">
+
+            <div class="row">
+            
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <label>Nombre completo</label>
+                      <input matInput  formControlName="Nombre">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <label>Correo Electrónico</label>
+                      <input matInput formControlName="Correo"  type="email">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Número de celular</label>
+                    <input matInput formControlName="Celular" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Número de identidad</label>
+                    <input matInput formControlName="Identidad"  type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Usuario</label>
+                    <input matInput formControlName="Usuario"  type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Contraseña</label>
+                    <input matInput formControlName="Password"  type="text">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                
+                      <label>Rol</label>
+                      <select id="inputState" formControlName="Rol" class="form-control">
+                     
+                        <option value="1"> Administrador</option>
+                        <option value="2"> Vendedor</option>
+                      </select>
+               
+                  
+                  </div>
+            </div>
+      
+      
+      
+            <div class="clearfix"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="actualizarUsuario()" data-dismiss="modal" class="btn btn-primary">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

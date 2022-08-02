@@ -1,0 +1,154 @@
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalDepartamento">
+            Crear Departamento</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalCategoria">
+            Crear Categoría</button>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear producto</h4>
+                        <p class="card-category">Llene los datos del producto</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="productoForm">
+                            <div class="row">
+                            
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Nombre</label>
+                                      <input matInput  formControlName="NombreProducto">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Código</label>
+                                      <input matInput formControlName="Codigo"  type="text">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Precio de compra</label>
+                                    <input matInput formControlName="PrecioVenta" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Precio de venta</label>
+                                    <input matInput formControlName="PrecioVenta" type="text">
+                                  </mat-form-field>
+                                </div>
+                              
+                                <div class="col-md-3">
+                                    <label>Categoría</label>
+                                    <select  id="inputState" formControlName="Categoria" class="form-control">
+                                        <option disable selected>Elija una Categoria</option>
+                                        <option value="{{categ.Categoria}}" *ngFor="let categ of Categorias"> {{categ.Categoria}}</option>
+                                      </select>  
+                                </div>
+                                <div class="col-md-3">
+                                  
+                                    <label>Departamento</label>
+                                    <select  id="inputState" formControlName="Departamento" class="form-control">
+                                        <option disable selected>Elija un departamento</option>
+                                        <option *ngFor="let depto of Departamentos"> {{depto.Departamento}}</option>
+                                      </select>  
+                               
+                                </div>
+                            </div>
+                            <div class="row">
+                          
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Foto del producto</label>
+                                    <input (change)="CargarFotoProducto($event)" matInput type="file">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-8">
+                                    <mat-form-field class="example-full-width">
+                                      <label>Comentarios</label>
+                                      <textarea matInput formControlName="Comentario"  type="text"></textarea>
+                                    </mat-form-field>
+                                  </div>
+                            </div>
+                           
+                      
+                            <button [disabled]="!this.productoForm.valid" (click)="crearProducto()" mat-raised-button type="submit" class="btn btn-danger pull-right">Crear Producto</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+  </div>
+
+
+
+  
+  <!-- Modal Categoria -->
+  <div class="modal fade" id="modalCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Categoría</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-row">
+                  <div class="col-12">
+                    <input type="text" #CategoriaNombre class="form-control" placeholder="Categoria">
+                  </div>
+                  <div class="col-12 mt-2">
+
+                    <select (change)="onChange($event.target.value)"  id="inputState"  class="form-control">
+                        <option disable selected>Elija un departamento</option>
+                        <option value="{{depto.Departamento}}" *ngFor="let depto of Departamentos"> {{depto.Departamento}}</option>
+                      </select>                
+                     </div>
+                </div>
+              </form>
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="crearCategoria(CategoriaNombre.value)" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Depto -->
+  <div class="modal fade" id="modalDepartamento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Departamento</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                    <label>Departamento</label>
+                  <input matInput  #Departamento>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="crearDepartamento(Departamento.value)" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Tabla de pagos</h4>
+                        <p class="card-category"> Aquí encontrará el historial de pagos</p>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" routerLink="/crear-venta/{{this.idMiembro}}" class="btn btn-warning">Hacer Pago</button>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary text-center">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Fecha de Pago
+                                    </th>
+                                    <th>
+                                        Monto del pago
+                                    </th>
+                                    <th>
+                                        Mes del pago
+                                    </th>
+                                    <th>
+                                        Ver detalles
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-center" *ngFor="let pagos of pagos; let i=index ">
+                                        <td>
+                                            {{i+1}}
+                                        </td>
+                                        <td>
+                                            {{pagos.FechaPago}}
+                                        </td>
+                                        <td>
+                                            {{pagos.Pago}}
+                                        </td>
+                                        <td>
+                                            {{pagos.MesPago}}
+                                        </td>
+                                        <td > 
+                                            <button routerLink="/detalle-pago/{{pagos.id}}" type="button" class="btn btn-info">Info</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

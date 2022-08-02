@@ -1,0 +1,73 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Editar perfil</h4>
+                      <p class="card-category">Complete your profile</p>
+                  </div>
+                  <div class="card-body">
+                      <form *ngIf="this.userForm" [formGroup]="userForm">
+                          <div class="row">
+                              <div class="col-md-5">
+                                <mat-form-field class="example-full-width">
+                                  <label>Nombre</label>
+                                    <input matInput  formControlName="Nombre" >
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Contraseña</label>
+                                    <input matInput formControlName="Password">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Usuario</label>
+                                    <input matInput formControlName="Usuario">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <label>Genero</label>
+                                  <mat-select formControlName="Rol">
+                                    <mat-option value="1" >
+                                      Administrador
+                                    </mat-option>
+                                    <mat-option value="2" >
+                                      Vendedor
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+
+
+                          </div>
+                     
+                   
+                   
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card card-profile">
+                  <div class="card-avatar">
+                      <a href="javascript:void(0)">
+                          <img class="img" src="{{this.Usuario[0].FotoUrl}}" />
+                      </a>
+                  </div>
+                  <div class="card-body">
+                      <h6 *ngIf="this.Usuario[0].Rol===1" class="card-category text-gray">Administrador</h6>
+                      <h6 *ngIf="this.Usuario[0].Rol===2" class="card-category text-gray">Vendedor</h6>
+                   
+                      <h4 class="card-title">{{this.Usuario[0].Nombre}}</h4>
+                                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<div class="main-content">
+    <div class="container-fluid">
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title ">Miembros</h4>
+            <p class="card-category"> Lista de todos los miembros registrados</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary text-center">
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Nombres
+                        </th>
+                        <th>
+                            Celular
+                        </th>
+                        <th>
+                            Identidad
+                        </th>
+                        <th>
+                            Fecha de ingreso
+                        </th>
+                        <th>
+                           Editar
+                        </th>
+                        <th>
+                           Eliminar
+                        </th>
+                        <th>
+                           Historial de Pagos
+                        </th>
+                        <th>
+                           Historial de pesos
+                        </th>
+                    </thead>
+                    <tbody>
+                        <div *ngIf="loading" class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </div>
+                          </div>
+                          <tr class="text-center" *ngFor="let miembro of miembros; let i=index">
+                         
+                            <td>
+                               {{i+1}}
+                            </td>
+                            <td>
+                                {{miembro.NombreCompleto}}
+                            </td>
+                            <td>
+                                {{miembro.Celular}}
+                            </td>
+                            <td>
+                                {{miembro.Identidad}}
+                            </td>
+                            <td >
+                                {{miembro.FechaRegistro}}
+                            </td>
+                            <td >
+                                <button type="button" data-toggle="modal" (click)="cargarData(miembro)" data-target="#exampleModal" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            </td>
+                            <td >
+                                <button type="button" (click)="inactivarMiembro(miembro)" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            </td>
+                            <td >
+                                <button type="button" routerLink="/listado-pagos/{{miembro.id}}" class="btn btn-success"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                            </td>
+                            <td >
+                              <button type="button" routerLink="/pesos-estadistica/{{miembro.id}}" class="btn btn-warning" ><i class="fa fa-line-chart" aria-hidden="true"></i></button>
+                            </td>
+                       
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informacion de contacto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="this.clienteForm" [formGroup]="clienteForm">
+            <img src="{{imagen}}" class="img-thumbnail" alt="...">
+            <div class="row">
+            
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <label>Nombre completo</label>
+                      <input matInput  formControlName="NombreCompleto">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                        <label>Correo Electrónico</label>
+                      <input matInput formControlName="Correo"  type="email">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Número de celular</label>
+                    <input matInput formControlName="Celular" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Número de identidad</label>
+                    <input matInput formControlName="Identidad"  type="text">
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Edad</label>
+                    <input matInput formControlName="Edad"   type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <label>Fecha de nacimiento</label>
+                    <input matInput formControlName="FechaNacimiento" type="date">
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <label>Dirección</label>
+                    <textarea matInput formControlName="Direccion"  type="text"></textarea>
+                  </mat-form-field>
+                </div>
+            </div>
+      
+      
+            <div class="clearfix"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="actualizarMiembro()" data-dismiss="modal" class="btn btn-primary">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

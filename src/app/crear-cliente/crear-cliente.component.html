@@ -1,0 +1,97 @@
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear Miembro</h4>
+                        <p class="card-category">Llene los datos del miembro</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="clienteForm">
+                            <div class="row">
+                            
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Nombre completo</label>
+                                      <input matInput  formControlName="NombreCompleto">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <label>Correo Electrónico</label>
+                                      <input matInput formControlName="Correo"  type="email">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Número de celular</label>
+                                    <input matInput formControlName="Celular" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Número de identidad</label>
+                                    <input matInput formControlName="Identidad"  type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Genero</label>
+                                    <mat-select formControlName="Genero">
+                                      <mat-option value="Hombre" >
+                                        Hombre
+                                      </mat-option>
+                                      <mat-option value="Mujer" >
+                                        Mujer
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Edad</label>
+                                    <input matInput formControlName="Edad"   type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Fecha de nacimiento</label>
+                                    <input matInput formControlName="FechaNacimiento" type="date">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Foto del cliente</label>
+                                    <input (change)="CargarFotoCliente($event)" matInput type="file">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                    <label>Dirección</label>
+                                    <textarea matInput formControlName="Direccion"  type="text"></textarea>
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                      
+                      
+                            <button [disabled]="!this.clienteForm.valid" (click)="crearCliente()" mat-raised-button type="submit" class="btn btn-danger pull-right">Crear Cliente</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+  </div>
+
